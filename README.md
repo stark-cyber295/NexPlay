@@ -1,16 +1,17 @@
 # NexPlay 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080b14">
   <title>NexPlay | Browser Arcade</title>
+
   <style>
     :root {
       --bg: #080b14;
       --panel: #111827;
-      --panel2: #151e30;
       --blue: #48a8ff;
       --purple: #a56bff;
       --text: #f4f7ff;
@@ -23,122 +24,74 @@
     body {
       margin: 0;
       color: var(--text);
-      background:
-        radial-gradient(ellipse at 50% -20%, #17325b 0, transparent 50%),
-        var(--bg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
-      min-height: 100vh;
+      background: radial-gradient(ellipse at 50% -20%, #17325b, transparent 55%), var(--bg);
+      font-family: system-ui, sans-serif;
     }
 
     button, input { font: inherit; }
-
-    button, a { -webkit-tap-highlight-color: transparent; }
-
     a { color: inherit; text-decoration: none; }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 5;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 15px 5%;
-      background: rgba(8, 11, 20, .88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .logo span { color: var(--blue); }
-
-    .top-actions {
-      display: flex;
       align-items: center;
-      gap: 10px;
+      padding: 15px 5%;
+      background: #080b14ed;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
-    .status-pill {
-      color: #a9e9c5;
-      background: #153326;
-      border: 1px solid #24563e;
-      border-radius: 30px;
-      padding: 7px 11px;
-      font-size: 12px;
-    }
+    .logo { font-size: 25px; font-weight: 900; }
+    .logo span, .accent { color: var(--blue); }
 
-    .hero {
-      text-align: center;
-      padding: 46px 18px 30px;
-    }
+    .wrap { width: min(1200px, 92%); margin: auto; }
+
+    .hero { text-align: center; padding: 45px 15px 30px; }
 
     .eyebrow {
       color: var(--blue);
       text-transform: uppercase;
       letter-spacing: 3px;
-      font-weight: 800;
       font-size: 12px;
+      font-weight: 800;
     }
 
     h1 {
-      font-size: clamp(38px, 7vw, 68px);
-      line-height: 1.05;
-      letter-spacing: -3px;
-      margin: 14px 0;
+      margin: 12px 0;
+      font-size: clamp(38px, 7vw, 66px);
+      line-height: 1.1;
+      letter-spacing: -2px;
     }
 
     h1 span {
       background: linear-gradient(90deg, var(--blue), var(--purple));
-      -webkit-background-clip: text;
-      background-clip: text;
       color: transparent;
+      background-clip: text;
     }
 
-    .hero p {
-      color: var(--muted);
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    .wrap {
-      width: min(1200px, 92%);
-      margin: 0 auto;
-    }
-
-    .player-section { margin: 18px auto 42px; }
+    .hero p { color: var(--muted); line-height: 1.7; }
 
     .section-heading {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
       margin-bottom: 14px;
     }
 
-    h2 {
-      font-size: 23px;
-      margin: 0;
-      letter-spacing: -.6px;
-    }
+    h2 { margin: 0; font-size: 23px; }
 
-    .small-text {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .muted { color: var(--muted); font-size: 12px; }
 
     .player-shell {
       overflow: hidden;
       background: #03050a;
       border: 1px solid #293c5b;
-      border-radius: 18px;
-      box-shadow: 0 0 45px #236cc21c;
+      border-radius: 16px;
+      margin-bottom: 42px;
     }
 
     .player-bar {
@@ -146,26 +99,15 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
       padding: 12px 15px;
       background: var(--panel);
       border-bottom: 1px solid var(--border);
     }
 
-    .playing-name {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      font-weight: 750;
-    }
+    .playing-name { font-weight: 800; }
 
-    .playing-name span:last-child {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .player-buttons {
+    .player-buttons, .game-actions, .tools, .filters {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
@@ -175,22 +117,17 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
       padding: 10px 13px;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 9px;
       color: var(--text);
       background: #1a2539;
-      cursor: pointer;
       font-size: 13px;
-      font-weight: 700;
-      transition: .18s ease;
+      font-weight: 750;
+      cursor: pointer;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      border-color: var(--blue);
-    }
+    .btn:hover { border-color: var(--blue); }
 
     .btn-primary {
       color: #06101d;
@@ -198,26 +135,22 @@
       border-color: var(--blue);
     }
 
-    .btn-primary:hover { background: #82c5ff; }
-
     .player-stage {
       position: relative;
-      width: 100%;
       aspect-ratio: 16 / 9;
       min-height: 280px;
-      background:
-        radial-gradient(ellipse at center, #132542 0, #070b13 70%);
+      background: radial-gradient(ellipse, #132542, #070b13);
     }
 
     #gameFrame {
       display: none;
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       min-height: 280px;
-      position: absolute;
-      inset: 0;
       border: 0;
-      background: #fff;
+      background: white;
     }
 
     .placeholder {
@@ -227,28 +160,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 22px;
       text-align: center;
-      padding: 24px;
     }
 
-    .big-icon {
-      font-size: clamp(45px, 8vw, 75px);
-      margin-bottom: 12px;
-      filter: drop-shadow(0 0 20px #48a8ff44);
-    }
-
-    .placeholder h3 {
-      font-size: 24px;
-      margin: 0 0 8px;
-    }
-
-    .placeholder p {
-      max-width: 460px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 17px;
-    }
+    .big-icon { font-size: 65px; margin-bottom: 10px; }
+    .placeholder h3 { margin: 0 0 8px; font-size: 23px; }
+    .placeholder p { max-width: 480px; color: var(--muted); line-height: 1.6; }
 
     .player-note {
       padding: 12px 15px;
@@ -259,61 +177,37 @@
       line-height: 1.6;
     }
 
-    .library { padding-bottom: 55px; }
+    .library { padding-bottom: 50px; }
 
-    .tools {
-      display: flex;
-      gap: 12px;
-      margin: 18px 0;
-      flex-wrap: wrap;
-    }
+    .tools { margin: 18px 0; }
 
-    .search-box {
-      flex: 1 1 230px;
-      min-width: 0;
-      position: relative;
-    }
+    .search-box { flex: 1 1 220px; }
 
     .search-box input {
       width: 100%;
-      padding: 14px 15px 14px 42px;
+      padding: 13px;
       color: var(--text);
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 10px;
       outline: none;
     }
 
-    .search-box input:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px #48a8ff19;
-    }
+    .search-box input:focus { border-color: var(--blue); }
 
-    .search-icon {
-      position: absolute;
-      top: 12px;
-      left: 14px;
-      color: var(--muted);
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
+    .filters { margin-bottom: 20px; }
 
     .filter {
       padding: 9px 13px;
-      border: 1px solid var(--border);
-      border-radius: 30px;
       color: var(--muted);
       background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 25px;
       cursor: pointer;
       font-size: 13px;
     }
 
-    .filter.active, .filter:hover {
+    .filter.active {
       color: white;
       background: #173459;
       border-color: var(--blue);
@@ -328,85 +222,69 @@
     .game-card {
       min-width: 0;
       padding: 15px;
-      border: 1px solid var(--border);
-      border-radius: 15px;
       background: linear-gradient(150deg, #141e30, #0d1320);
-      transition: .2s ease;
+      border: 1px solid var(--border);
+      border-radius: 14px;
     }
 
     .game-card:hover {
-      transform: translateY(-3px);
       border-color: #416a9f;
-      box-shadow: 0 12px 30px #0003;
+      transform: translateY(-2px);
     }
 
     .game-top {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      gap: 10px;
     }
 
     .game-icon {
-      width: 54px;
-      height: 54px;
       display: grid;
       place-items: center;
-      border-radius: 13px;
-      font-size: 29px;
+      width: 52px;
+      height: 52px;
+      font-size: 28px;
+      border-radius: 12px;
       background: linear-gradient(135deg, #1d3b60, #292147);
-      border: 1px solid #354768;
     }
 
     .favorite {
-      padding: 3px;
       color: #8190a9;
-      border: 0;
       background: transparent;
-      font-size: 23px;
+      border: 0;
+      font-size: 24px;
       cursor: pointer;
     }
 
     .favorite.selected { color: #ffd166; }
 
-    .game-card h3 {
-      margin: 13px 0 5px;
-      font-size: 16px;
-    }
+    .game-card h3 { margin: 13px 0 5px; font-size: 16px; }
 
     .game-card p {
-      height: 34px;
+      min-height: 34px;
       margin: 0 0 13px;
       color: var(--muted);
       font-size: 12px;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
-    .game-actions {
-      display: flex;
-      gap: 7px;
-    }
-
-    .game-actions .btn {
-      flex: 1;
-      padding: 9px 6px;
-      font-size: 12px;
-    }
+    .game-actions { display: flex; }
+    .game-actions .btn { flex: 1; padding: 9px 5px; font-size: 12px; }
 
     .empty {
       grid-column: 1 / -1;
-      padding: 40px;
-      color: var(--muted);
+      padding: 35px;
       text-align: center;
+      color: var(--muted);
       border: 1px dashed var(--border);
-      border-radius: 14px;
+      border-radius: 12px;
     }
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 23px 5%;
+      padding: 24px 5%;
       color: var(--muted);
       text-align: center;
+      border-top: 1px solid var(--border);
       font-size: 12px;
       line-height: 1.8;
     }
@@ -417,14 +295,9 @@
 
     @media (max-width: 620px) {
       .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .topbar { padding: 12px 4%; }
-      .logo { font-size: 22px; }
-      .status-pill { display: none; }
-      .hero { padding-top: 35px; }
-      h1 { letter-spacing: -1.5px; }
-      .player-bar { align-items: flex-start; flex-direction: column; }
       .player-stage { aspect-ratio: 4 / 3; min-height: 300px; }
       #gameFrame { min-height: 300px; }
+      .topbar { padding: 12px 4%; }
     }
 
     @media (max-width: 370px) {
@@ -432,26 +305,24 @@
     }
   </style>
 </head>
+
 <body>
   <header class="topbar">
     <a class="logo" href="#">Nex<span>Play</span></a>
-    <div class="top-actions">
-      <span class="status-pill">● Browser Arcade</span>
-      <a class="btn" href="#games">🎮 Games</a>
-    </div>
+    <a class="btn" href="#games">🎮 Games</a>
   </header>
 
   <section class="hero">
     <div class="eyebrow">Your next game is here</div>
     <h1>Play More. <span>Explore More.</span></h1>
-    <p>Find your next favorite game. Search the library, save favorites, and try games in the built-in player.</p>
+    <p>Find your next favorite game, search the library, and save your favorites.</p>
   </section>
 
   <main class="wrap">
-    <section class="player-section" id="player">
+    <section id="player">
       <div class="section-heading">
         <h2>🎯 Game Player</h2>
-        <span class="small-text">Choose a game below to get started</span>
+        <span class="muted">Select a game below</span>
       </div>
 
       <div class="player-shell">
@@ -462,29 +333,29 @@
           </div>
           <div class="player-buttons">
             <button class="btn" id="reloadBtn" type="button">↻ Reload</button>
-            <a class="btn btn-primary" id="openGame" href="https://poki.com/" target="_blank" rel="noopener noreferrer">Open Game ↗</a>
+            <a class="btn btn-primary" id="openGame"
+               href="https://escaperoad-3.com/"
+               target="_blank" rel="noopener noreferrer">Open Game ↗</a>
           </div>
         </div>
 
         <div class="player-stage">
-          <iframe
-            id="gameFrame"
+          <iframe id="gameFrame"
             title="NexPlay game player"
             allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write"
             allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
 
           <div class="placeholder" id="placeholder">
-            <div class="big-icon" id="placeholderIcon">🕹️</div>
-            <h3 id="placeholderTitle">Pick your first game</h3>
-            <p id="placeholderText">Choose any game card below. If a game doesn't appear here, use the Open Game button to play on its original website.</p>
-            <a href="#games" class="btn btn-primary">Browse Games ↓</a>
+            <div class="big-icon">🕹️</div>
+            <h3>Pick your first game</h3>
+            <p>Choose a game below. If it doesn't load here, click Open Game to play on its own website.</p>
+            <a class="btn btn-primary" href="#games">Browse Games ↓</a>
           </div>
         </div>
 
         <div class="player-note" id="playerStatus" aria-live="polite">
-          Ready. Some game websites block embedded players; those games may need to open in a new tab.
+          Ready! Some game websites do not allow embedded play.
         </div>
       </div>
     </section>
@@ -492,13 +363,13 @@
     <section class="library" id="games">
       <div class="section-heading">
         <h2>🕹️ Game Library</h2>
-        <span class="small-text" id="gameCount"></span>
+        <span class="muted" id="gameCount"></span>
       </div>
 
       <div class="tools">
         <div class="search-box">
-          <span class="search-icon">⌕</span>
-          <input id="searchInput" type="search" placeholder="Search games..." autocomplete="off" aria-label="Search games">
+          <input id="searchInput" type="search"
+            placeholder="🔎 Search games..." aria-label="Search games">
         </div>
         <button class="btn" id="favoritesToggle" type="button">☆ Favorites</button>
       </div>
@@ -519,7 +390,7 @@
 
   <footer>
     <strong>NexPlay</strong> — Your browser arcade.<br>
-    Games are hosted by their respective websites. NexPlay is an independent game portal and is not affiliated with those sites.
+    Games are provided by their respective websites. NexPlay is an independent portal.
   </footer>
 
   <script>
@@ -528,8 +399,8 @@
         name: "Escape Road 3",
         icon: "🚘",
         category: "Racing",
-        description: "Escape, dodge traffic, and keep moving.",
-        url: "https://poki.com/"
+        description: "Escape the police in a driving chase.",
+        url: "https://escaperoad-3.com/"
       },
       {
         name: "Slope",
@@ -550,34 +421,34 @@
         icon: "🍪",
         category: "Strategy",
         description: "Click cookies and build your bakery.",
-        url: "https://orteil.dashnet.org/cookieclicker/"
+        url: "https://cookieclicker.com/"
       },
       {
         name: "BitLife",
         icon: "📱",
         category: "Strategy",
-        description: "Make choices in a life simulator.",
+        description: "Life simulator website.",
         url: "https://bitlifeonline.com/"
       },
       {
         name: "Minecraft Classic",
         icon: "🧱",
         category: "Arcade",
-        description: "Build with blocks in the classic version.",
+        description: "Build with blocks in classic Minecraft.",
         url: "https://classic.minecraft.net/"
       },
       {
         name: "Geometry Dash",
         icon: "🔷",
         category: "Music",
-        description: "Jump and dodge to the rhythm.",
-        url: "https://www.crazygames.com/"
+        description: "A browser rhythm-platformer inspired by Geometry Dash.",
+        url: "https://www.crazygames.com/game/geometry-dash-online"
       },
       {
         name: "Baseball Bros",
         icon: "⚾",
         category: "Sports",
-        description: "Swing for the fences in arcade baseball.",
+        description: "Play arcade-style baseball.",
         url: "https://baseballbros.io/"
       },
       {
@@ -592,13 +463,13 @@
         icon: "🏈",
         category: "Sports",
         description: "Take on opponents in arcade football.",
-        url: "https://footballbros.io/"
+        url: "https://fb.dunkbros.com/"
       },
       {
         name: "Moto X3M",
         icon: "🏍️",
         category: "Racing",
-        description: "Race a bike across obstacle courses.",
+        description: "Race a bike through obstacle courses.",
         url: "https://poki.com/en/moto-x3m"
       },
       {
@@ -626,7 +497,7 @@
         name: "Slither.io",
         icon: "🐍",
         category: "Arcade",
-        description: "Grow your snake and collect glowing dots.",
+        description: "Grow your snake and collect dots.",
         url: "https://slither.io/"
       },
       {
@@ -640,7 +511,7 @@
         name: "Chess",
         icon: "♟️",
         category: "Strategy",
-        description: "Practice your moves on a chessboard.",
+        description: "Play chess online.",
         url: "https://www.chess.com/play"
       },
       {
@@ -654,15 +525,15 @@
         name: "Vex 3",
         icon: "🏃",
         category: "Arcade",
-        description: "Run, jump, and solve platform challenges.",
-        url: "https://www.crazygames.com/"
+        description: "Run, jump, climb, and dodge obstacles.",
+        url: "https://vex-3.com/vex-3"
       },
       {
         name: "Space Waves",
         icon: "🌊",
         category: "Arcade",
-        description: "Steer through waves of obstacles.",
-        url: "https://www.crazygames.com/"
+        description: "Steer through a course full of obstacles.",
+        url: "https://geometrydash3d.com/space-waves"
       },
       {
         name: "Smash Karts",
@@ -734,19 +605,17 @@
     function saveFavorites() {
       try {
         localStorage.setItem("nexplay-favorites", JSON.stringify(favorites));
-      } catch {
-        // Favorites still work until this page is refreshed.
-      }
+      } catch {}
     }
 
     function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, char => ({
+      return String(value).replace(/[&<>"']/g, character => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
         '"': "&quot;",
         "'": "&#39;"
-      })[char]);
+      })[character]);
     }
 
     function renderGames() {
@@ -771,7 +640,7 @@
       grid.innerHTML = "";
 
       if (!filtered.length) {
-        grid.innerHTML = '<div class="empty">No games found. Try another search or category.</div>';
+        grid.innerHTML = '<div class="empty">No games found. Try another search.</div>';
         return;
       }
 
@@ -783,23 +652,16 @@
         card.innerHTML = `
           <div class="game-top">
             <div class="game-icon">${game.icon}</div>
-            <button
-              class="favorite ${isFavorite ? "selected" : ""}"
-              type="button"
-              aria-label="${isFavorite ? "Remove from" : "Add to"} favorites"
-              title="${isFavorite ? "Remove favorite" : "Add favorite"}"
-            >${isFavorite ? "★" : "☆"}</button>
+            <button class="favorite ${isFavorite ? "selected" : ""}"
+              type="button" aria-label="Toggle favorite"
+              title="Toggle favorite">${isFavorite ? "★" : "☆"}</button>
           </div>
           <h3>${escapeHTML(game.name)}</h3>
           <p>${escapeHTML(game.description)}</p>
           <div class="game-actions">
             <button class="btn btn-primary play-button" type="button">▶ Play Here</button>
-            <a
-              class="btn"
-              href="${escapeHTML(game.url)}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >↗ Open</a>
+            <a class="btn" href="${escapeHTML(game.url)}"
+              target="_blank" rel="noopener noreferrer">↗ Open</a>
           </div>
         `;
 
@@ -823,7 +685,6 @@
 
     function loadGame(game) {
       currentGame = game;
-
       currentTitle.textContent = game.name;
       currentIcon.textContent = game.icon;
       openGame.href = game.url;
@@ -831,12 +692,11 @@
       placeholder.style.display = "none";
       frame.style.display = "block";
 
-      // Reset the iframe when reloading the same game.
       frame.src = "about:blank";
       frame.src = game.url;
 
       playerStatus.textContent =
-        `Loading ${game.name}. If the player stays blank or shows an error, this site may block embedding. Click "Open Game" to play on the original website.`;
+        `Loading ${game.name}. If it stays blank, click "Open Game" to play on the game's own website.`;
 
       document.getElementById("player").scrollIntoView({
         behavior: "smooth",
@@ -871,7 +731,6 @@
       favoritesToggle.textContent = showFavoritesOnly
         ? "★ Show All Games"
         : "☆ Favorites";
-      favoritesToggle.classList.toggle("btn-primary", showFavoritesOnly);
       renderGames();
     });
 
@@ -879,4 +738,3 @@
   </script>
 </body>
 </html>
-
