@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090b14">
+<title>NexPlay — Your next game starts here</title>
+<style>
+:root{color-scheme:dark;--bg:#090b14;--panel:#111522;--panel2:#171c2d;--text:#f5f7ff;--muted:#9aa4bc;--line:#272d42;--purple:#8b5cf6;--blue:#42d9ff;--pink:#ff4fa3;--green:#6df0bb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% -10%,#27204d 0,transparent 38%),radial-gradient(ellipse at 95% 10%,#102d43 0,transparent 28%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}.wrap{width:min(1220px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(9,11,20,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}.nav{height:76px;display:flex;align-items:center;gap:28px}.brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:21px;letter-spacing:-.7px;white-space:nowrap}.brand-mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),#4b7bff 65%,var(--blue));box-shadow:0 5px 28px #7659ff55;font-size:20px}.brand em{font-style:normal;color:#a98cff}.navlinks{display:flex;gap:23px;color:var(--muted);font-weight:650}.navlinks a:hover,.navlinks a.active{color:#fff}.navright{margin-left:auto;display:flex;gap:10px;align-items:center}.search{position:relative;width:min(260px,28vw)}.search input{width:100%;background:#131827;border:1px solid var(--line);border-radius:12px;padding:11px 13px 11px 38px;color:var(--text);outline:none}.search input:focus{border-color:var(--purple);box-shadow:0 0 0 3px #8b5cf622}.search span{position:absolute;left:13px;top:8px;color:var(--muted);font-size:18px}.iconbtn,.mobilemenu{border:1px solid var(--line);background:#131827;color:#fff;border-radius:12px;padding:10px 12px;cursor:pointer}.mobilemenu{display:none}
+main{padding:28px 0 70px}.hero{position:relative;overflow:hidden;border:1px solid #343050;border-radius:28px;min-height:355px;padding:44px;display:flex;align-items:center;background:linear-gradient(110deg,rgba(20,20,43,.97) 0%,rgba(23,24,49,.9) 52%,rgba(29,28,62,.45) 100%),radial-gradient(circle at 78% 50%,#6d42d9 0,transparent 32%);box-shadow:0 24px 80px #0003}.hero:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:7%;top:10px;background:linear-gradient(135deg,#8b5cf6aa,#38d9ff66);filter:blur(1px);opacity:.65}.hero:after{content:"✦";position:absolute;right:22%;top:44px;color:#fff9;font-size:30px;filter:drop-shadow(0 0 16px #fff)}.hero-copy{position:relative;z-index:2;max-width:610px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border:1px solid #8b5cf655;background:#8b5cf61b;color:#cbbcff;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase}.pulse{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}h1{font-size:clamp(38px,5.4vw,66px);line-height:.99;letter-spacing:-3px;margin:19px 0 16px;font-weight:950}h1 span{background:linear-gradient(90deg,#bba0ff,#6de6ff);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{max-width:490px;color:#b7bfd5;font-size:16px;margin:0 0 25px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:12px;padding:13px 18px;font-weight:850;cursor:pointer;transition:transform .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.primary{color:white;background:linear-gradient(100deg,#8b5cf6,#5d75ff);box-shadow:0 8px 26px #795cff44}.secondary{color:#f4f5ff;background:#ffffff0b;border:1px solid #ffffff24}.hero-art{position:absolute;z-index:1;right:8%;top:50%;transform:translateY(-50%) rotate(-7deg);width:245px;height:245px;border:1px solid #ffffff35;border-radius:35px;background:linear-gradient(145deg,#b79bff,#7655dc 48%,#222a59);box-shadow:0 35px 70px #0007,inset 0 1px #ffffff66;display:grid;place-items:center;font-size:115px}.hero-art:before{content:"NEXPLAY";position:absolute;bottom:18px;font-size:13px;font-weight:950;letter-spacing:4px;color:#fff9}.hero-art:after{content:"";position:absolute;inset:13px;border:1px solid #ffffff42;border-radius:25px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:17px 0 36px}.stat{display:flex;align-items:center;gap:12px;padding:15px 18px;background:#111522b8;border:1px solid #242a3d;border-radius:16px}.stat-icon{width:40px;height:40px;border-radius:12px;background:#8b5cf61b;display:grid;place-items:center;font-size:20px}.stat strong{display:block;font-size:15px}.stat small{color:var(--muted);font-size:12px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:35px 0 17px}.section-head h2{font-size:25px;letter-spacing:-.7px;margin:0;font-weight:900}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.subtle-link{color:#b7a4ff;font-weight:800;font-size:13px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 19px}.chip{border:1px solid var(--line);background:#121725;color:#aeb7cd;border-radius:999px;padding:8px 13px;cursor:pointer;font-size:12px;font-weight:800;transition:.18s}.chip:hover{border-color:#8b5cf6;color:white}.chip.active{background:#8b5cf625;border-color:#8b5cf6;color:#d9ccff}
+.games{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.game{min-width:0;overflow:hidden;background:linear-gradient(180deg,#151a2a,#101421);border:1px solid #272d42;border-radius:18px;transition:transform .2s,border-color .2s,box-shadow .2s}.game:hover{transform:translateY(-5px);border-color:#6550a6;box-shadow:0 18px 35px #0004}.cover{height:150px;position:relative;display:grid;place-items:center;overflow:hidden;background:var(--cover,linear-gradient(135deg,#40326b,#172c4a))}.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;background:#ffffff12}.cover:before{width:180px;height:180px;right:-38px;top:-55px}.cover:after{width:115px;height:115px;left:-30px;bottom:-60px}.cover-icon{position:relative;z-index:1;font-size:65px;filter:drop-shadow(0 8px 10px #0006);transition:transform .25s}.game:hover .cover-icon{transform:scale(1.12) rotate(-4deg)}.tag{position:absolute;top:11px;left:11px;z-index:2;border-radius:7px;padding:4px 7px;background:#090b14c9;border:1px solid #ffffff24;color:#e5e9f7;font-size:9px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}.fav{position:absolute;right:10px;top:9px;z-index:3;border:1px solid #ffffff2b;background:#090b14b8;color:white;border-radius:9px;width:32px;height:32px;cursor:pointer;font-size:17px}.fav.saved{color:#ffd76a}.game-body{padding:14px}.game-title-row{display:flex;align-items:center;gap:8px;justify-content:space-between}.game h3{font-size:15px;line-height:1.2;margin:0;font-weight:850}.game-body p{min-height:35px;margin:7px 0 13px;color:#9da7bf;font-size:12px;line-height:1.45}.game-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}.genre{font-size:10px;color:#9da7bf}.play-small{border:0;background:#24213d;color:#d6caff;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:900;cursor:pointer}.play-small:hover{background:#7454df;color:white}
+.player{margin-top:39px;border:1px solid #2b3146;border-radius:22px;overflow:hidden;background:#101421}.player-top{display:flex;align-items:center;gap:12px;padding:17px 20px;border-bottom:1px solid #272d42}.player-leds{display:flex;gap:5px}.player-leds i{width:8px;height:8px;border-radius:50%;background:#ff6b7a}.player-leds i:nth-child(2){background:#ffc65b}.player-leds i:nth-child(3){background:#62e6a9}.player-top strong{font-size:13px}.player-top small{margin-left:auto;color:var(--muted);font-size:11px}.player-screen{min-height:330px;display:grid;place-items:center;text-align:center;padding:30px;background:radial-gradient(ellipse at center,#1e2441 0, #0c101b 66%)}.player-screen .big-icon{font-size:58px}.player-screen h3{font-size:23px;margin:8px 0}.player-screen p{max-width:480px;color:var(--muted);margin:0 auto 18px}.player-screen iframe{width:100%;height:520px;border:0;border-radius:10px;background:#080a10}.player-screen:has(iframe){display:block;padding:12px}.player-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.notice{font-size:11px;color:#8f9ab2;margin:12px 0 0}.empty{grid-column:1/-1;text-align:center;padding:42px 20px;color:var(--muted);border:1px dashed #343b53;border-radius:16px}
+footer{border-top:1px solid #252a3d;padding:26px 0;color:#818ba3;font-size:12px}.footer-inner{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}.footer-brand{color:#dfe4f5;font-weight:900}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#1c2334;border:1px solid #424b66;padding:11px 16px;border-radius:12px;color:white;z-index:50;transition:.2s;box-shadow:0 12px 30px #0006}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.games{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-art{right:5%;width:190px;height:190px;font-size:85px}.hero-copy{max-width:58%}.navlinks{gap:13px}}
+@media(max-width:680px){.wrap{width:min(100% - 24px,1220px)}.nav{height:66px;gap:12px}.navlinks{display:none}.mobilemenu{display:block}.navright{gap:7px}.search{width:min(42vw,210px)}.search input{padding:10px 8px 10px 32px}.search span{left:10px;top:7px}.hero{min-height:390px;padding:28px 23px;align-items:flex-start}.hero-copy{max-width:100%}.hero p{max-width:95%;font-size:14px}.hero-art{width:115px;height:115px;right:20px;bottom:17px;top:auto;transform:rotate(-8deg);font-size:50px;border-radius:22px;opacity:.65}.hero-art:before{inset:7px}.hero-art:after{inset:8px;border-radius:16px}.hero-art:before{width:auto;height:auto}.hero-art:after{font-size:8px}.hero-art{display:none}h1{font-size:44px;letter-spacing:-2px}.stats{gap:8px;margin-bottom:28px}.stat{padding:11px 9px;gap:8px}.stat-icon{width:32px;height:32px;font-size:16px}.stat strong{font-size:12px}.stat small{font-size:10px}.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.cover{height:125px}.cover-icon{font-size:54px}.game-body{padding:11px}.game h3{font-size:13px}.game-body p{font-size:11px}.section-head h2{font-size:22px}.player-screen{min-height:270px}.player-screen iframe{height:360px}.iconbtn{padding:9px}.footer-inner{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="NexPlay home"><span class="brand-mark">N</span><span>NEX<em>PLAY</em></span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a><a href="#games">Discover</a><a href="#player">Game player</a>
+    </nav>
+    <div class="navright">
+      <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Find a game..." aria-label="Search games"></label>
+      <button class="iconbtn" id="favoritesToggle" aria-pressed="false" title="Show favorites">☆</button>
+      <button class="mobilemenu" id="browseBtn" aria-label="Browse games">☰</button>
+    </div>
+  </div>
+</header>
+<main class="wrap" id="home">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="pulse"></span> YOUR NEXT LEVEL STARTS HERE</div>
+      <h1>Play more.<br><span>Explore everything.</span></h1>
+      <p>Your game night, one click away. Discover arcade favorites, racing challenges, strategy games, and more in your personal browser arcade.</p>
+      <div class="actions"><a class="btn primary" href="#games">🎮 Explore games <span>↗</span></a><a class="btn secondary" href="#player">▶ Open game player</a></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">🎮</div>
+  </section>
+  <section class="stats" aria-label="Site highlights">
+    <div class="stat"><div class="stat-icon">⚡</div><div><strong>Quick launch</strong><small>Jump into a game</small></div></div>
+    <div class="stat"><div class="stat-icon">☆</div><div><strong>Your favorites</strong><small>Saved on this device</small></div></div>
+    <div class="stat"><div class="stat-icon">⌕</div><div><strong>Easy discovery</strong><small>Search and filter</small></div></div>
+  </section>
+  <section id="games">
+    <div class="section-head"><div><h2>Discover games</h2><p>Pick a game and get straight to the fun.</p></div><a class="subtle-link" href="#player">Go to player ↗</a></div>
+    <div class="chips" id="categoryChips" aria-label="Filter by genre">
+      <button class="chip active" data-category="All">✦ All games</button>
+      <button class="chip" data-category="Racing">🏎 Racing</button>
+      <button class="chip" data-category="Arcade">👾 Arcade</button>
+      <button class="chip" data-category="Casual">🟣 Casual</button>
+      <button class="chip" data-category="Simulation">🌆 Simulation</button>
+      <button class="chip" data-category="Puzzle">🧩 Puzzle</button>
+      <button class="chip" data-category="Sandbox">🌍 Sandbox</button>
+    </div>
+    <div class="games" id="gameGrid"></div>
+  </section>
+  <section class="player" id="player">
+    <div class="player-top"><div class="player-leds"><i></i><i></i><i></i></div><strong>NEXPLAY GAME PLAYER</strong><small id="playerStatus">READY WHEN YOU ARE</small></div>
+    <div class="player-screen" id="playerScreen">
+      <div><div class="big-icon">🕹️</div><h3>Choose your next game</h3><p>Select a game from the library to try loading it here. If its site blocks embedding, use the Open Game button instead.</p><a class="btn primary" href="#games">Browse library ↓</a><p class="notice">Some game sites restrict embedding or may be unavailable on certain networks.</p></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><div><span class="footer-brand">NEXPLAY</span> — Your personal browser arcade.</div><div>Independent game directory · Games belong to their respective creators.</div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const games = [
+ {id:"escape-road-3",name:"Escape Road 3",category:"Racing",icon:"🚘",tag:"FEATURED",description:"Race through busy streets and try to stay ahead.",url:"https://escaperoad-3.com/",cover:"linear-gradient(135deg,#703c9e,#e45c7b 52%,#f6b64b)"},
+ {id:"cookie-clicker",name:"Cookie Clicker",category:"Casual",icon:"🍪",tag:"CLASSIC",description:"Click, bake, upgrade, and grow your cookie empire.",url:"https://orteil.dashnet.org/cookieclicker/",cover:"linear-gradient(135deg,#57351f,#c87937 55%,#f3d38a)"},
+ {id:"bitlife",name:"BitLife",category:"Simulation",icon:"🌆",tag:"SIMULATION",description:"Explore a life-simulation game and make choices.",url:"https://bitlife-life-simulator.com/",cover:"linear-gradient(135deg,#1c6e60,#5bc6a1 60%,#d0f2c8)"},
+ {id:"minecraft",name:"Minecraft Classic",category:"Sandbox",icon:"⛏️",tag:"SANDBOX",description:"Build with blocks in the classic browser version.",url:"https://classic.minecraft.net/",cover:"linear-gradient(135deg,#244a36,#629b49 55%,#b6ce78)"},
+ {id:"geometry-dash",name:"Geometry Dash",category:"Arcade",icon:"🔷",tag:"RHYTHM",description:"Jump, dodge, and keep the rhythm in this challenge.",url:"https://www.geometrydash.com/",cover:"linear-gradient(135deg,#262e8a,#5a64ed 55%,#48d6e8)"},
+ {id:"poki",name:"Poki Games",category:"Arcade",icon:"🎮",tag:"GAME HUB",description:"Explore a wide collection of browser games.",url:"https://poki.com/",cover:"linear-gradient(135deg,#1b4f91,#28b8d5 55%,#9de6c8)"},
+ {id:"2048",name:"2048",category:"Puzzle",icon:"🔢",tag:"PUZZLE",description:"Combine matching tiles and aim for the 2048 tile.",url:"https://play2048.co/",cover:"linear-gradient(135deg,#69513b,#bd9b70 55%,#f1d9a9)"},
+ {id:"slither",name:"Slither.io",category:"Casual",icon:"🐍",tag:"MULTIPLAYER",description:"Grow your snake and navigate the arena.",url:"https://slither.io/",cover:"linear-gradient(135deg,#164e45,#2cb58b 55%,#b6ef76)"},
+ {id:"t-rex",name:"Chrome Dino",category:"Arcade",icon:"🦖",tag:"ARCADE",description:"A classic endless runner with simple controls.",url:"https://chromedino.com/",cover:"linear-gradient(135deg,#303c48,#667985 55%,#d4e4e8)"},
+ {id:"drift-hunters",name:"Drift Hunters",category:"Racing",icon:"🏁",tag:"RACING",description:"Take a spin in a 3D drifting game.",url:"https://drifthunters.com/",cover:"linear-gradient(135deg,#39234f,#8d4dd0 55%,#f78c62)"},
+ {id:"chess",name:"Lichess",category:"Puzzle",icon:"♟️",tag:"STRATEGY",description:"Play chess puzzles or a game against others.",url:"https://lichess.org/",cover:"linear-gradient(135deg,#263c35,#68927c 55%,#d1d9b1)"},
+ {id:"wordle",name:"Wordle",category:"Puzzle",icon:"🔤",tag:"WORD GAME",description:"Guess the hidden word with logic and vocabulary.",url:"https://www.nytimes.com/games/wordle/index.html",cover:"linear-gradient(135deg,#245b48,#4fae82 55%,#b7e5b6)"}
+];
+const grid=document.getElementById("gameGrid"), searchInput=document.getElementById("searchInput"), favToggle=document.getElementById("favoritesToggle"), playerScreen=document.getElementById("playerScreen"), playerStatus=document.getElementById("playerStatus");
+let category="All", onlyFavorites=false, selectedGame=null;
+let favorites=new Set();try{favorites=new Set(JSON.parse(localStorage.getItem("nexplay-favorites")||"[]"))}catch(e){}
+let recentlyPlayed=[];try{recentlyPlayed=JSON.parse(localStorage.getItem("nexplay-recent")||"[]")}catch(e){}
+function safeSave(){try{localStorage.setItem("nexplay-favorites",JSON.stringify([...favorites]));localStorage.setItem("nexplay-recent",JSON.stringify(recentlyPlayed.slice(0,8)))}catch(e){}}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.nexToast);window.nexToast=setTimeout(()=>t.classList.remove("show"),2300)}
+function renderGames(){
+ const q=searchInput.value.trim().toLowerCase();
+ const filtered=games.filter(g=>(category==="All"||g.category===category)&&(!onlyFavorites||favorites.has(g.id))&&(!q||(g.name+" "+g.category+" "+g.description).toLowerCase().includes(q)));
+ grid.innerHTML="";
+ if(!filtered.length){grid.innerHTML='<div class="empty">No games found. Try another search or category.</div>';return}
+ filtered.forEach(g=>{
+  const card=document.createElement("article");card.className="game";
+  card.innerHTML=`<div class="cover" style="--cover:${g.cover}"><span class="tag">${g.tag}</span><button class="fav ${favorites.has(g.id)?"saved":""}" data-fav="${g.id}" aria-label="${favorites.has(g.id)?"Remove from":"Add to"} favorites" title="Toggle favorite">${favorites.has(g.id)?"★":"☆"}</button><div class="cover-icon" aria-hidden="true">${g.icon}</div></div><div class="game-body"><div class="game-title-row"><h3>${g.name}</h3></div><p>${g.description}</p><div class="game-bottom"><span class="genre">${g.category.toUpperCase()}</span><button class="play-small" data-play="${g.id}">PLAY ↗</button></div></div>`;
+  grid.appendChild(card);
+ });
+}
+function playGame(id){
+ const g=games.find(x=>x.id===id);if(!g)return;selectedGame=g;
+ recentlyPlayed=[id,...recentlyPlayed.filter(x=>x!==id)].slice(0,8);safeSave();
+ playerStatus.textContent="NOW PLAYING: "+g.name.toUpperCase();
+ playerScreen.innerHTML=`<div><div class="big-icon">${g.icon}</div><h3>${g.name}</h3><p>Try launching this game in the player. If the game does not appear, its website may block embedded play.</p><div class="player-actions"><button class="btn primary" id="tryEmbed">▶ Try in player</button><a class="btn secondary" href="${g.url}" target="_blank" rel="noopener noreferrer">Open Game ↗</a></div><p class="notice">If embedding is blocked, the separate game website is the best option. Availability depends on the game site and your network.</p></div>`;
+ playerScreen.querySelector("#tryEmbed").addEventListener("click",()=>{
+  playerScreen.innerHTML=`<iframe title="${g.name}" src="${g.url}" loading="lazy" allow="fullscreen; autoplay; gamepad" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="player-actions" style="padding:12px"><a class="btn primary" href="${g.url}" target="_blank" rel="noopener noreferrer">Open Game in new tab ↗</a><button class="btn secondary" id="resetPlayer">Back to game info</button></div>`;
+  playerScreen.querySelector("#resetPlayer").addEventListener("click",()=>playGame(g.id));
+  toast("If the game doesn't load, open it in a new tab.");
+ });
+ document.getElementById("player").scrollIntoView({behavior:"smooth",block:"start"});
+}
+grid.addEventListener("click",e=>{
+ const fav=e.target.closest("[data-fav]");if(fav){const id=fav.dataset.fav;if(favorites.has(id))favorites.delete(id);else favorites.add(id);safeSave();renderGames();toast(favorites.has(id)?"Added to favorites":"Removed from favorites");return}
+ const play=e.target.closest("[data-play]");if(play)playGame(play.dataset.play);
+});
+searchInput.addEventListener("input",renderGames);
+document.getElementById("categoryChips").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(!b)return;category=b.dataset.category;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));renderGames()});
+favToggle.addEventListener("click",()=>{onlyFavorites=!onlyFavorites;favToggle.classList.toggle("active",onlyFavorites);favToggle.setAttribute("aria-pressed",String(onlyFavorites));favToggle.textContent=onlyFavorites?"★":"☆";toast(onlyFavorites?"Showing saved favorites":"Showing all games");renderGames();document.getElementById("games").scrollIntoView({behavior:"smooth"})});
+document.getElementById("browseBtn").addEventListener("click",()=>document.getElementById("games").scrollIntoView({behavior:"smooth"}));
+renderGames();
+</script>
+</body>
+</html>
